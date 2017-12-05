@@ -34,7 +34,7 @@ public class BinaryTreeImp {
         Node current = root;
 
         while (current.value != value) {
-            if (current.value < value) {
+            if (current.value > value) {
                 current = current.leftNote;
             } else {
                 current = current.rightNote;
