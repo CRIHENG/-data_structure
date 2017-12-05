@@ -14,6 +14,6 @@ public class TestTree {
      System.out.println(binaryTreeImp.root.leftNote.value);
      System.out.println(binaryTreeImp.root.leftNote.rightNote.value);
      System.out.println(binaryTreeImp.root.rightNote.value);
-
+     System.out.println(binaryTreeImp.find(3).value);
 }
 }
