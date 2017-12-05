@@ -1,39 +1,37 @@
 package Tree.BinaryTree;
 
 public class BinaryTreeImp {
-    public Note root;
+    public Node root;
 
     public void insert(long value) {
-        Note newNode = new Note(value);
-        Note current = root;
-        Note parent;
-        if (root != null) {
-            root.value = value;
-            return;
-        } else {
-            while (true) {
-                parent = current;
-                if (current.value > value) {
-                    current = current.leftNote;
-                    if (current == null) {
-                        parent.leftNote = newNode;
-                        return;
-                    }
-                } else {
-                    current = current.rightNote;
-                    if (current == null) {
-                        parent.rightNote = newNode;
-                        return;
-                    }
-                }
-            }
-        }
-
+     Node newNode =new Node(value);
+     Node parent;
+     Node current=root;
+     if(root==null){
+         root=newNode;
+         return;
+     }
+     while (true) {
+         parent = current;
+         if (current.value > value) {
+             current = current.leftNote;
+             if (current == null) {
+                 parent.leftNote = newNode;
+                 return;
+             }
+         } else {
+             current = current.rightNote;
+             if (current == null) {
+                 parent.rightNote = newNode;
+                 return;
+             }
+         }
+     }
 
     }
 
-    public Note find(int value) {
-        Note current = root;
+    public Node find(int value) {
+        Node current = root;
 
         while (current.value != value) {
             if (current.value < value) {
