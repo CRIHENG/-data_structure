@@ -3,14 +3,14 @@ package Tree.BinaryTree;
 /*
 * 二叉树 节点
 * */
-public class Note {
+public class Node {
     public long value;
 
-    public  Note leftNote;
+    public  Node leftNote;
 
-    public Note rightNote;
+    public Node rightNote;
 
-    Note(long value){
+    Node(long value){
         this.value=value;
     }
 }
