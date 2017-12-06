@@ -17,10 +17,14 @@ public class MySeqList<T> implements MyList {
         this(values.length);
         for (int i = 0; i < values.length; i++) {
             this.element[i] = values[i];
+            this.n = element.length;
         }
-        this.n = element.length;
-    }
 
+    }
+   MySeqList(List<T> list){
+
+
+   }
     MySeqList(int length) {
         this.element = new Object[length];
         this.n = 0;
@@ -83,34 +87,46 @@ public class MySeqList<T> implements MyList {
     }
 
     public Object remove(int i) {
+
+        if(i<0||i>this.n-1){
+            throw  new  IndexOutOfBoundsException(i+"");
+        }
+
+        for(int j=i;j>element.length-i;j++){
+            element[j]=element[j+1];
+        }
+        this.n--;
         
-        
-        
-        
-        return null;
+        return element[i];
     }
 
     public void clear() {
-
+        this.n=0;
     }
 
     public int search(Object key) {
-        return 1;
+        for(int i=0;i<this.n;i++){
+            if(element[i]==key){
+                return  i;
+            }
+        }
+        return -1;
     }
-
     public boolean contains(Object key) {
-        return true;
+        return  search(key)!=-1;
     }
 
     public int insertDifferent(Object x) {
-        return 1;
+      if( search(x)!=-1)return  search(x);
+        return  insert(x);
     }
 
     public Object remove(Object key) {
-        return null;
+       if( search(key)!=-1)   return remove(search(key));
+       return search(key);
     }
 
     public void addAll(List list) {
-
+    //？
     }
 }
