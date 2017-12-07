@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by githu on 2017/12/6.
  */
-public class MySeqList<T> implements MyList {
+public class MySeqList<T> extends Object implements MyList {
     //用于存放数据
     protected Object[] element;
 
@@ -21,10 +21,12 @@ public class MySeqList<T> implements MyList {
         }
 
     }
-   MySeqList(List<T> list){
+
+    MySeqList(List<T> list) {
 
 
-   }
+    }
+
     MySeqList(int length) {
         this.element = new Object[length];
         this.n = 0;
@@ -42,9 +44,9 @@ public class MySeqList<T> implements MyList {
         return this.n;
     }
 
-    public Object get(int i) {
+    public T get(int i) {
         if (i >= 0 && i < n) {
-            return element[i];
+            return (T) element[i];
         }
         return null;
     }
@@ -83,50 +85,53 @@ public class MySeqList<T> implements MyList {
     }
 
     public int insert(Object x) {
-        return insert(this.n,x);
+        return insert(this.n, x);
     }
 
     public Object remove(int i) {
 
-        if(i<0||i>this.n-1){
-            throw  new  IndexOutOfBoundsException(i+"");
+        if (i < 0 || i > this.n - 1) {
+            throw new IndexOutOfBoundsException(i + "");
         }
 
-        for(int j=i;j>element.length-i;j++){
-            element[j]=element[j+1];
+        for (int j = i; j > element.length - i; j++) {
+            element[j] = element[j + 1];
         }
         this.n--;
-        
+
         return element[i];
     }
 
     public void clear() {
-        this.n=0;
+        this.n = 0;
     }
 
     public int search(Object key) {
-        for(int i=0;i<this.n;i++){
-            if(element[i]==key){
-                return  i;
+        for (int i = 0; i < this.n; i++) {
+            if (element[i] == key) {
+                return i;
             }
         }
         return -1;
     }
+
     public boolean contains(Object key) {
-        return  search(key)!=-1;
+        return search(key) != -1;
     }
 
     public int insertDifferent(Object x) {
-      if( search(x)!=-1)return  search(x);
-        return  insert(x);
+        if (search(x) != -1) return search(x);
+        return insert(x);
     }
 
     public Object remove(Object key) {
-       if( search(key)!=-1)   return remove(search(key));
-       return search(key);
+        if (search(key) != -1) return remove(search(key));
+        return search(key);
     }
 
     public void addAll(List list) {
-    //？
+        for (int i=0;i<this.n;i++){
+            this.insert(list.get(i));
+        }
     }
 }
